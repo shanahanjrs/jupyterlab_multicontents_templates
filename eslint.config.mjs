@@ -62,10 +62,11 @@ export default [
       "@typescript-eslint/no-namespace": "off",
       "@typescript-eslint/no-use-before-define": "off",
 
-      "@typescript-eslint/quotes": ["error", "single", {
-        avoidEscape: true,
-        allowTemplateLiterals: false,
-      }],
+    // This module was removed from @typescript-eslint and moved to @stylistic/eslint-plugin
+    //   "@typescript-eslint/quotes": ["error", "single", {
+    //     avoidEscape: true,
+    //     allowTemplateLiterals: false,
+    //   }],
 
       curly: ["error", "all"],
       eqeqeq: "error",
