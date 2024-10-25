@@ -1,4 +1,5 @@
 module.exports = {
+  files: ["**/*.ts", "**/*.tsx"],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
