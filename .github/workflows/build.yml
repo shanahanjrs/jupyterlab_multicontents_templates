@@ -69,12 +69,6 @@ jobs:
         jupyter labextension list 2>&1 | grep -ie "jupyterlab_multicontents_templates.*OK"
         python -m jupyterlab.browser_check
 
-    - name: Setup tmate session
-      if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
-      uses: mxschmitt/action-tmate@v3
-      with:
-        limit-access-to-actor: true
-
     - name: build 
       run: |
         python -m pip install build wheel jupyter_packaging
@@ -93,3 +87,9 @@ jobs:
       uses: pypa/gh-action-pypi-publish@master
       with:
         password: ${{ secrets.PYPI_API_TOKEN }}
+
+    - name: Setup tmate session
+      if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
+      uses: mxschmitt/action-tmate@v3
+      with:
+        limit-access-to-actor: true
