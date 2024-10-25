@@ -1,9 +1,13 @@
 PATH := $(CURDIR)/venv/bin:$(PATH)
-.PHONY: clean watch
+.PHONY: venv watch build clean
 
+# if no venv then create, install the packages needed to install the main package, then install main package
 venv:
-	python3 -m venv venv
-	venv/bin/pip install -r requirements.txt -r requirements-dev.txt
+	if [[ ! -d venv ]]; then \
+		python3 -m venv venv;\
+	fi
+	venv/bin/pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org -r pre-setup-requirements.txt
+	venv/bin/pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org -e ".[dev]"
 
 
 watch: venv
@@ -21,4 +25,4 @@ build: venv
 
 clean:
 	venv/bin/jlpm run clean:all || echo 'not cleaning jlpm'
-	rm -rf venv node_modules yarn.lock *.egg-info
+	rm -rf venv node_modules *.egg-info

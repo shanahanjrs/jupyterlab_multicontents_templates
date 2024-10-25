@@ -1,5 +1,8 @@
 """
 jupyterlab_multicontents_templates setup
+
+NOTE: replace with pyproject.toml when appropriate and we can confirm
+      the custom jupyter items in here can be supported.
 """
 import json
 from pathlib import Path
@@ -13,11 +16,11 @@ from jupyter_packaging import (
 )
 import setuptools
 
+
 HERE = Path(__file__).parent.resolve()
 
 # The name of the project
 name = "jupyterlab_multicontents_templates"
-
 lab_path = HERE / name / "labextension"
 
 # Representative files that should exist after a successful build
@@ -61,6 +64,8 @@ long_description = (HERE / "README.md").read_text()
 # Get the package info from package.json
 pkg_json = json.loads((HERE / "package.json").read_bytes())
 
+# to install all required deps AND the dev deps:
+#     pip install -e ".[dev]"
 setup_args = dict(
     name=name,
     version=pkg_json["version"],
@@ -82,8 +87,14 @@ setup_args = dict(
         "tornado",
         "jupyter_server",
         "IPython",
-        "jupyter_packaging~=0.7.9"
+        "jupyter_packaging~=0.7.9",
+        "s3contents"
     ],
+    extras_require={
+        'dev': [
+            'pre-commit',
+        ]
+    },
     zip_safe=False,
     include_package_data=True,
     python_requires=">=3.9",
@@ -93,10 +104,6 @@ setup_args = dict(
         "License :: OSI Approved :: BSD License",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
         "Framework :: Jupyter",
     ],
 )

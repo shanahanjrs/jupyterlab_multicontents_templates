@@ -1,6 +1,5 @@
 include LICENSE
 include README.md
-include pyproject.toml
 include jupyter-config/jupyterlab_multicontents_templates.json
 
 include package.json
