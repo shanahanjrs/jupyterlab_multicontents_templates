@@ -105,6 +105,7 @@ setup_args = dict(
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
         "Framework :: Jupyter",
+        "Framework :: Jupyter :: JupyterLab"
     ],
 )
 

@@ -1,4 +1,0 @@
-# NOTE: This is needed because the setup.py has to have these packages pre-installed
-#       or it will throw an import error
-jupyterlab~=4.2
-jupyter_packaging
