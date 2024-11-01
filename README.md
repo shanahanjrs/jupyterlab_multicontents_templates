@@ -92,6 +92,36 @@ jupyter labextension list
 
 ## Contributing
 
+### Docker Development install
+
+1. start jupyterlab via docker and mount your workspace
+
+```bash
+docker run \
+    --rm \
+    -p 8889:8888 \
+    -v /Users/$(whoami)/.local:/home/jovyan/.local \
+    -v /Users/$(whoami)/.yarn:/home/jovyan/.yarn \
+    -v /Users/$(whoami)/.jupyter:/home/jovyan/.jupyter \
+    -v /Users/$(whoami)/path/to/workspace:/home/jovyan/path/to/workspace \
+    quay.io/jupyter/base-notebook \
+    start-notebook.py \
+        --debug \
+        --autoreload \
+        --NotebookApp.token='localtoken'
+```
+
+2. Open localhost:8889/lab?token=localtoken in your browser
+
+3. Start a new Terminal session
+
+4. `cd` to your jupyterlab_multicontents_templates
+
+5. `conda deactivate && conda install -y make`
+
+6. `make install`
+
+
 ### Development install
 
 Note: You will need NodeJS to build the extension package.
