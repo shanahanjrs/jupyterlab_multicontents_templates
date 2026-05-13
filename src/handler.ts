@@ -47,7 +47,10 @@ export async function requestAPI<T>(
     if (data.traceback) {
       console.error(data.traceback);
     }
-    throw new ServerConnection.ResponseError(response, data.error || data.message || data);
+    throw new ServerConnection.ResponseError(
+      response,
+      data.error || data.message || data
+    );
   }
 
   return data;
